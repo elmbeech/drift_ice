@@ -219,7 +219,7 @@
     </cell_rules>
 
     <user_parameters>
-        <random_seed type="int" units="dimensionless" description="">-1</random_seed> <!-- bue: -1 0; real seeding is done in env.reset(seed=n) -->
+        <random_seed type="int" units="dimensionless" description="">0</random_seed> <!-- bue: -1 0; real seeding is done in env.reset(seed=n) -->
         <number_of_cells type="int" units="none" description="initial number of cells (for each cell type)">64</number_of_cells>
         <time type="double" units="min" description="necessary for PhysiGym, never delete!">0.0</time>
         <dt_gym type="double" units="min" description="necessary for PhysiGym, never delete!">60.0</dt_gym>
