@@ -218,3 +218,12 @@ void custom_function( Cell* pCell, Phenotype& phenotype , double dt )
 
 void contact_function( Cell* pMe, Phenotype& phenoMe , Cell* pOther, Phenotype& phenoOther , double dt )
 { return; } 
+
+int set_microenv(std::string s_substrate, double r_dose) {
+    // update substrate concentration
+    int k = microenvironment.find_density_index(s_substrate);
+    for (unsigned int n=0; n < microenvironment.number_of_voxels(); n++) {
+        microenvironment(n)[k] += r_dose;
+    }
+    return 0;
+}

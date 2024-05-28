@@ -223,6 +223,9 @@ int main( int argc, char* argv[] )
                         save_PhysiCell_to_MultiCellDS_v2( filename , microenvironment , PhysiCell_globals.current_time );
                     }
 
+                    //set_microenv("drug", 0.01);
+                    set_microenv("drug", UniformRandom());
+
                     PhysiCell_globals.full_output_index++;
                     PhysiCell_globals.next_full_save_time += PhysiCell_settings.full_save_interval;
                 }

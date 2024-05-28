@@ -17,6 +17,7 @@
 
 # modules
 import glob
+import matplotlib.pyplot as plt
 import os
 import pandas as pd
 import pcdl
@@ -32,7 +33,9 @@ print('\nUNITTEST check for drift ice ...')
 # generate data frame files #
 #############################
 
-# get timeseries data                                                       
+#######################
+# get timeseries data #
+#######################						       
 for s_path in glob.glob('output0*'):
     print(f'processing: {s_path}')
     i_episode = int(s_path.replace('output',''))
@@ -41,6 +44,15 @@ for s_path in glob.glob('output0*'):
     df_conc = mcdsts.get_conc_df().drop({'runtime'}, axis=1)
     df_cell.to_csv(f'timeseries_cell_episode{str(i_episode).zfill(3)}.csv')
     df_conc.to_csv(f'timeseries_conc_episode{str(i_episode).zfill(3)}.csv')
+
+    # plot timeseries
+    fig, axs = plt.subplots(nrows=3, ncols=1 ,figsize=(8,12))
+    mcdsts.plot_timeseries('cell_type', ax=axs[0])
+    mcdsts.plot_timeseries('cell_type', 'drug', ax=axs[1])
+    mcdsts.plot_timeseries('cell_type', 'death_rates_0', ax=axs[2])
+    fig.suptitle(f'timeseries episode {str(i_episode).zfill(3)}')
+    plt.tight_layout()
+    fig.savefig(f'timeseries_plot_episode{str(i_episode).zfill(3)}.png')
 print()
 
 ##################
