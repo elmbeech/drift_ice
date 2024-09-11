@@ -107,7 +107,7 @@ int main( int argc, char* argv[] )
         //}
         //else
         //{
-        XML_status = load_PhysiCell_config_file( "./config/PhysiCell_settings.xml" );
+        XML_status = load_PhysiCell_config_file( "./config/PhysiCell_settings.xml", true );
         PhysiCell_settings.folder = folder;
         sprintf( copy_command , "cp ./config/PhysiCell_settings.xml %s" , PhysiCell_settings.folder.c_str() );
         //}
